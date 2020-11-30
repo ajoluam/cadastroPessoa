@@ -25,27 +25,27 @@ public class PessoaController {
 	private PessoaService service;
 
 	@GetMapping(value = "/pessoa/lista")
-	public List<Pessoa> Get() {
+	public List<Pessoa> getListaPessoas() {
 		return service.getAll();
 	}
 
 	@GetMapping(value = "/pessoa/{id}")
-	public ResponseEntity<Pessoa> GetById(@PathVariable(value = "id") long id) {
+	public ResponseEntity<Pessoa> getPessoaPorId(@PathVariable(value = "id") long id) {
 		return service.getById(id);
 	}
 
 	@PostMapping(value = "/pessoa")
-	public ResponseEntity<Pessoa> Post(@Valid @RequestBody Pessoa pessoa) {
+	public ResponseEntity<Pessoa> cadastraPessoa(@Valid @RequestBody Pessoa pessoa) {
 		return new ResponseEntity<>(service.savePessoa(pessoa), HttpStatus.CREATED);
 	}
 
 	@PutMapping(value = "/pessoa/{id}")
-	public ResponseEntity<Pessoa> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Pessoa newPessoa) {
+	public ResponseEntity<Pessoa> alteraPessoa(@PathVariable(value = "id") long id, @Valid @RequestBody Pessoa newPessoa) {
 		return service.putPessoa(id, newPessoa);
 	}
 
 	@DeleteMapping(value = "/pessoa/{id}")
-	public ResponseEntity<Pessoa> Delete(@PathVariable(value = "id") long id) {
+	public ResponseEntity<Pessoa> excluiPessoa(@PathVariable(value = "id") long id) {
 		return service.deletePessoa(id);
 	}
 
